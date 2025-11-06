@@ -113,6 +113,7 @@ export default function Index() {
           </h1>
           <div className="hidden md:flex gap-8">
             <a href="#portfolio" className="hover:text-primary transition-colors">Портфолио</a>
+            <a href="#process" className="hover:text-primary transition-colors">Процесс</a>
             <a href="#about" className="hover:text-primary transition-colors">О себе</a>
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
             <a href="#contact" className="hover:text-primary transition-colors">Контакты</a>
@@ -197,7 +198,44 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-6 bg-card/50">
+      <section id="process" className="py-20 px-6 bg-card/50">
+        <div className="container mx-auto">
+          <h3 className="font-heading text-4xl font-bold text-center mb-4">Процесс работы</h3>
+          <p className="text-center text-muted-foreground mb-12">От идеи до реализации</p>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <Card className="group overflow-hidden border-border hover:border-primary transition-all duration-300">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                  src="https://cdn.poehali.dev/files/0e5c16ef-da33-4c82-95a2-b4e713dbf3e3.jpg" 
+                  alt="Планировки и чертежи"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h4 className="font-heading text-lg font-semibold mb-2">Детальная проработка планировок</h4>
+                <p className="text-sm text-muted-foreground">Каждый план создается с учетом эргономики и функциональности пространства</p>
+              </CardContent>
+            </Card>
+
+            <Card className="group overflow-hidden border-border hover:border-primary transition-all duration-300">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                  src="https://cdn.poehali.dev/files/446b63a2-5036-4245-bfef-ed280897293d.jpg" 
+                  alt="Работа над планировкой"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6">
+                <h4 className="font-heading text-lg font-semibold mb-2">Ручная проработка решений</h4>
+                <p className="text-sm text-muted-foreground">Эскизирование помогает найти оптимальные планировочные решения</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-20 px-6">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
