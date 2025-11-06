@@ -19,6 +19,30 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'Современный загородный дом',
+    category: 'residential',
+    image: 'https://cdn.poehali.dev/files/9bbec1d7-4c81-4374-8101-0d2d494bd2db.jpg',
+    year: '2024',
+    location: 'Подмосковье'
+  },
+  {
+    id: 2,
+    title: 'Бизнес-центр «Горизонт»',
+    category: 'commercial',
+    image: 'https://cdn.poehali.dev/files/2652301a-c4f7-4f3f-9290-2d6cd75aa8ee.jpg',
+    year: '2023',
+    location: 'Москва'
+  },
+  {
+    id: 3,
+    title: 'Загородная резиденция',
+    category: 'residential',
+    image: 'https://cdn.poehali.dev/files/e908c2fe-8435-4c9f-9bed-b0670a1ff008.jpg',
+    year: '2024',
+    location: 'Краснодарский край'
+  },
+  {
+    id: 4,
     title: 'Вилла на побережье',
     category: 'residential',
     image: 'https://cdn.poehali.dev/projects/6f9d9dc9-2132-46d2-94bd-65f1f2142b43/files/be29146d-92d3-49c7-b937-89bc7bbd15a6.jpg',
@@ -26,15 +50,15 @@ const projects: Project[] = [
     location: 'Сочи'
   },
   {
-    id: 2,
-    title: 'Бизнес-центр «Горизонт»',
+    id: 5,
+    title: 'Офисное здание',
     category: 'commercial',
     image: 'https://cdn.poehali.dev/projects/6f9d9dc9-2132-46d2-94bd-65f1f2142b43/files/39461170-d51c-4bb7-82ef-2ba66d2925cf.jpg',
     year: '2023',
     location: 'Москва'
   },
   {
-    id: 3,
+    id: 6,
     title: 'Культурный центр',
     category: 'public',
     image: 'https://cdn.poehali.dev/projects/6f9d9dc9-2132-46d2-94bd-65f1f2142b43/files/56946ea0-7a7b-4282-b8ed-3ba265786edc.jpg',
