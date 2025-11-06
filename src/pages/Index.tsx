@@ -1,71 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
-
-type Category = 'all' | 'residential' | 'commercial' | 'public';
-
-interface Project {
-  id: number;
-  title: string;
-  category: Category;
-  image: string;
-  year: string;
-  location: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Современный загородный дом',
-    category: 'residential',
-    image: 'https://cdn.poehali.dev/files/9bbec1d7-4c81-4374-8101-0d2d494bd2db.jpg',
-    year: '2024',
-    location: 'Подмосковье'
-  },
-  {
-    id: 2,
-    title: 'Бизнес-центр «Горизонт»',
-    category: 'commercial',
-    image: 'https://cdn.poehali.dev/files/2652301a-c4f7-4f3f-9290-2d6cd75aa8ee.jpg',
-    year: '2023',
-    location: 'Москва'
-  },
-  {
-    id: 3,
-    title: 'Загородная резиденция',
-    category: 'residential',
-    image: 'https://cdn.poehali.dev/files/e908c2fe-8435-4c9f-9bed-b0670a1ff008.jpg',
-    year: '2024',
-    location: 'Краснодарский край'
-  },
-  {
-    id: 4,
-    title: 'Вилла на побережье',
-    category: 'residential',
-    image: 'https://cdn.poehali.dev/projects/6f9d9dc9-2132-46d2-94bd-65f1f2142b43/files/be29146d-92d3-49c7-b937-89bc7bbd15a6.jpg',
-    year: '2024',
-    location: 'Сочи'
-  },
-  {
-    id: 5,
-    title: 'Офисное здание',
-    category: 'commercial',
-    image: 'https://cdn.poehali.dev/projects/6f9d9dc9-2132-46d2-94bd-65f1f2142b43/files/39461170-d51c-4bb7-82ef-2ba66d2925cf.jpg',
-    year: '2023',
-    location: 'Москва'
-  },
-  {
-    id: 6,
-    title: 'Культурный центр',
-    category: 'public',
-    image: 'https://cdn.poehali.dev/projects/6f9d9dc9-2132-46d2-94bd-65f1f2142b43/files/56946ea0-7a7b-4282-b8ed-3ba265786edc.jpg',
-    year: '2023',
-    location: 'Санкт-Петербург'
-  }
-];
+import { projects, type Category } from '@/data/projects';
 
 const services = [
   {
@@ -166,33 +106,39 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, idx) => (
-              <Card 
-                key={project.id} 
-                className="group overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <CardContent className="p-6">
-                  <h4 className="font-heading text-xl font-semibold mb-2">{project.title}</h4>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <Icon name="Calendar" size={16} />
-                      {project.year}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Icon name="MapPin" size={16} />
-                      {project.location}
-                    </span>
+              <Link key={project.id} to={`/project/${project.id}`}>
+                <Card 
+                  className="group overflow-hidden border-border hover:border-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in cursor-pointer"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <div className="relative overflow-hidden aspect-[4/3]">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                      <Button variant="secondary" size="sm" className="gap-2">
+                        Подробнее
+                        <Icon name="ArrowRight" size={16} />
+                      </Button>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-6">
+                    <h4 className="font-heading text-xl font-semibold mb-2">{project.title}</h4>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Icon name="Calendar" size={16} />
+                        {project.year}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Icon name="MapPin" size={16} />
+                        {project.location}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -239,7 +185,8 @@ export default function Index() {
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="font-heading text-4xl font-bold mb-6">Обо мне</h3>
+              <h3 className="font-heading text-4xl font-bold mb-6">Александр Орлов</h3>
+              <p className="text-primary font-semibold mb-4">Архитектор</p>
               <p className="text-muted-foreground mb-4 leading-relaxed">
                 Более 10 лет я создаю архитектурные решения, которые объединяют функциональность, эстетику и устойчивое развитие.
               </p>
@@ -378,7 +325,7 @@ export default function Index() {
 
       <footer className="py-8 px-6 border-t border-border">
         <div className="container mx-auto text-center text-muted-foreground">
-          <p>&copy; 2024 АрхДизайн. Все права защищены.</p>
+          <p>&copy; 2024 Александр Орлов. Все права защищены.</p>
         </div>
       </footer>
     </div>
